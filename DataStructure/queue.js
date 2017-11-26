@@ -1,3 +1,7 @@
+/**
+ *       使用javascript实现一个队列
+ *       具有enqueue、dequeue、show三个方法
+ */
 function Queue () {
     this._oldestIndex = 1;
     this._newestIndex = 1;
@@ -27,14 +31,3 @@ Queue.prototype.dequeue = function () {
 Queue.prototype.show = function () {
     console.log(this._storage);
 }
-
-
-var queueA = new Queue();
-queueA.enqueue(1);
-queueA.enqueue(2);
-queueA.enqueue(3);
-queueA.enqueue(4);
-queueA.show();
-queueA.dequeue();
-console.log("一个数据出队后：")
-queueA.show();
