@@ -1,4 +1,7 @@
-//实现一个栈
+/**
+ *       使用javascript实现一个栈
+ *       具有push、pop、show三个方法
+ */
 function Stack () {
     this._size = 0;
     this._storage = {};
@@ -30,14 +33,3 @@ Stack.prototype.show = function () {
 }
 
 var stackA = new Stack();
-
-stackA.push(1);
-stackA.push(2);
-stackA.show();
-console.log(stackA.pop() + "出栈,剩下：");
-stackA.show();
-/*
-    1、2
-    2出栈剩下：
-    1
-*/ 
