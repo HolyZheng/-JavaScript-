@@ -1,8 +1,12 @@
 /**
  *        使用js实现一个二叉树。
- *        traverseDF深度优先遍历
- *        traverseBF广度优先搜索
- *        insert插入
+ *        Tree        构造函数
+ *        traverseDF  深度优先遍历
+ *        traverseBF  广度优先遍历
+ *        insert      插入
+ *        inOrderTraverse中序遍历
+ *        preOrderTraverse前序遍历
+ *        postOderTraverse后序遍历
  */
 
 function Node (data) {
@@ -90,6 +94,54 @@ Tree.prototype.insert = function (data) {
     }
 }
 
+
+/**
+ *     中序遍历
+ */
+Tree.prototype.forInOrder = function (node) {
+    if (node) {
+        this.forInOrder(node.left);
+        console.log(node.data);
+        this.forInOrder(node.right);
+    }
+}
+
+Tree.prototype.inOrderTraverse = function () {
+    this.forInOrder(this._root);
+}
+
+/**
+ *    前序遍历
+ */
+Tree.prototype.forPreOrder = function (node) {
+    if (node) {
+        console.log(node.data);
+        this.forPreOrder(node.left);
+        this.forPreOrder(node.right);
+    }
+}
+
+Tree.prototype.preOrderTraverse = function () {
+    this.forPreOrder(this._root);
+}
+
+/**
+ *    后序遍历
+ */
+Tree.prototype.forPostOrder = function (node) {
+    if (node) {
+        this.forPostOrder(node.left);
+        this.forPostOrder(node.right);
+        console.log(node.data);
+    }
+}
+
+Tree.prototype.postOderTraverse = function () {
+    this.forPostOrder(this._root);
+}
+
+
+
 function Queue () {
     this._oldestIndex = 1;
     this._newestIndex = 1;
@@ -113,4 +165,3 @@ Queue.prototype.dequeue = function () {
     }
     return null;
 }
-
