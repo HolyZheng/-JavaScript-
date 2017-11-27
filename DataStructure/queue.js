@@ -25,7 +25,9 @@ Queue.prototype.dequeue = function () {
         deletedData = this._storage[oldestIndex];
         delete this._storage[oldestIndex];
         this._oldestIndex++;
+        return deletedData;
     }
+    return;
 }
 
 Queue.prototype.show = function () {
