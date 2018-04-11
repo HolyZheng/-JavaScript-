@@ -18,9 +18,9 @@ Queue.prototype.enqueue = function (data) {
 }
 
 Queue.prototype.dequeue = function () {
-    var oldestIndex = this._oldestIndex,
-        newestIndex = this._newestIndex,
-        deletedData;
+    var oldestIndex = this._oldestIndex,  //记录队头位置
+        newestIndex = this._newestIndex,  //记录队尾位置
+        deletedData;                      //记录要删除的数据，并返回。
     if (oldestIndex !== newestIndex) {
         deletedData = this._storage[oldestIndex];
         delete this._storage[oldestIndex];

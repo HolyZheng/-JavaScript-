@@ -14,7 +14,7 @@ Stack.prototype.push = function (data) {
 }
 
 Stack.prototype.pop = function () {
-    var size = this._size;
+    var size = this._size; //指向栈头
     var deletedData;
     if (size) {
         deletedData = this._storage[size];

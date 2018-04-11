@@ -105,6 +105,31 @@ Tree.prototype.forInOrder = function (node) {
         this.forInOrder(node.right);
     }
 }
+/**  非递归中序遍历
+ *   借助一个栈，先沿着左子树到叶节点，依次入栈，
+ * 再出栈遍历，对该栈顶节点的右子树进行统一的操作
+ */
+
+Tree.prototype.inOrder = function (callback) {
+    var currentNode = null;
+    if (this.root) {
+      currentNode = root;
+    } else {
+      return;
+    }
+    var stack = [];
+    do {
+      while (currentNode != null) {
+        stack.push(currentNode);
+        currentNode = currentNode.left;
+      }
+      if (!stack.length) {
+        stack.pop(currentNode);
+        callback(currentNode);
+        currentNode = currentNode.right;
+      }
+    } while (currentNode !== null && stack.length)
+  }
 
 Tree.prototype.inOrderTraverse = function () {
     this.forInOrder(this._root);
@@ -124,6 +149,31 @@ Tree.prototype.forPreOrder = function (node) {
 Tree.prototype.preOrderTraverse = function () {
     this.forPreOrder(this._root);
 }
+
+/** 非递归前序遍历
+ *  算法关键思想是用栈为右子树预留位置。
+ *  可以利用数组作为一个栈。
+ */
+Tree.prototype.preOrder = function (callback) {
+    var currentNode = null;
+    if (this.root) {
+      currentNode = this.root;
+    } else {
+      return;
+    }
+    var stack = [];
+    while (currentNode) {
+      callback(currentNode);
+      if (currentNode.right) {
+        stack.push(currentNode.right);
+      }
+      if (currentNode.left) {
+        currentNode = currentNode.left;
+      } else {
+        currentNode = stack.pop();
+      }
+    }
+  }
 
 /**
  *    后序遍历
