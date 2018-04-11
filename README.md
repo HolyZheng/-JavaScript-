@@ -4,15 +4,21 @@
 ***
 已完成：</br></br>
 数据结构
-- 队列
-- 栈
-- 单链表
-- 双向链表
-- 二叉树</br>
+- [队列](https://github.com/HolyZheng/-JavaScript-/blob/master/DataStructure/queue.js)
+- [栈](https://github.com/HolyZheng/-JavaScript-/blob/master/DataStructure/stack.js)
+- [单链表](https://github.com/HolyZheng/-JavaScript-/blob/master/DataStructure/singlyList.js)
+- [双向链表](https://github.com/HolyZheng/-JavaScript-/blob/master/DataStructure/doublyList.js)
+- [二叉树](https://github.com/HolyZheng/-JavaScript-/blob/master/DataStructure/tree.js)</br>
 </br>
 
 算法
-- 冒泡算法</br>
+- [冒泡排序](https://github.com/HolyZheng/-JavaScript-/blob/master/Algorithm/bubbleSort.js)
+- [堆排序](https://github.com/HolyZheng/-JavaScript-/blob/master/Algorithm/heapSort.js)
+- [插入排序](https://github.com/HolyZheng/-JavaScript-/blob/master/Algorithm/insertSort.js)
+- [归并排序](https://github.com/HolyZheng/-JavaScript-/blob/master/Algorithm/mergeSort.js)
+- [快速排序](https://github.com/HolyZheng/-JavaScript-/blob/master/Algorithm/quickSort.js)
+- [选择排序](https://github.com/HolyZheng/-JavaScript-/blob/master/Algorithm/selectionSort.js)
+- [希尔排序](https://github.com/HolyZheng/-JavaScript-/blob/master/Algorithm/shellSort.js)</br>
 </br>
 
 设计模式
