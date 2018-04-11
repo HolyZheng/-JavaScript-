@@ -8,7 +8,7 @@
 - [栈](https://github.com/HolyZheng/-JavaScript-/blob/master/DataStructure/stack.js)
 - [单链表](https://github.com/HolyZheng/-JavaScript-/blob/master/DataStructure/singlyList.js)
 - [双向链表](https://github.com/HolyZheng/-JavaScript-/blob/master/DataStructure/doublyList.js)
-- [二叉树](https://github.com/HolyZheng/-JavaScript-/blob/master/DataStructure/tree.js)</br>
+- [二叉树及遍历](https://github.com/HolyZheng/-JavaScript-/blob/master/DataStructure/tree.js)</br>
 </br>
 
 算法
