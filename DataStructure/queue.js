@@ -33,3 +33,52 @@ Queue.prototype.dequeue = function () {
 Queue.prototype.show = function () {
     console.log(this._storage);
 }
+
+// es6 写法
+class Queue {
+    constructor () {
+        this._oldestIndex = 1;
+        this._newestIndex = 1;
+        this._storage = {};
+    }
+    size () {
+        return this._newestIndex - this._oldestIndex;
+    }
+    enqueue (data) {
+        this._storage[this._newestIndex] = data;
+        this._newestIndex++;
+    }
+    dequeue () {
+        let deleteData;
+        if (this._oldestIndex !== this._newestIndex) {
+        deleteData = this._storage[this._oldestIndex];
+        delete this._storage[this._oldestIndex];
+        return deleteData;
+        }
+    }
+    show () {
+        console.log(this._storage);
+    }
+}
+
+// 也可以借助数组
+class Queue {
+    constructor () {
+      this._storage = [];
+    }
+    size () {
+      return this._storage.length;
+    }
+    enqueue (data) {
+      this._storage.push(data);
+    }
+    dequeue () {
+      if (this._storage.length) {
+        let deleteData = this._storage.shift();
+        return deleteData;
+      }
+    }
+    show () {
+      console.log(this._storage);
+    }
+}

@@ -32,4 +32,44 @@ Stack.prototype.show = function () {
     }
 }
 
+// es6 写法
+class Stack {
+    constructor () {
+      this._size = 0;
+      this._storage = {};
+    }
+    push (data) {
+      let size = ++this._size;
+      this._storage[size] = data;
+    }
+    pop () {
+      if (this._size) {
+        let deleteData = this._storage[this._size];
+        delete this._storage[this._size];
+        return deleteData;
+      }
+    }
+    show () {
+      console.log(this._storage);
+    }
+}
+
+// 借助数组
+class Stack {
+    constructor () {
+      this._storage = [];
+    }
+    push (data) {
+      this._storage.push(data);
+    }
+    pop () {
+      if (this._storage.length) {
+        return this._storage.pop();
+      }
+    }
+    show () {
+      console.log(this._storage);
+    }
+}
+
 var stackA = new Stack();

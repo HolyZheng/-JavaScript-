@@ -85,3 +85,73 @@ SinglyList.prototype.remove = function (position) {
     this._length--;
     return nodeToDelete;
 }
+
+// es6 写法
+
+class Node {
+    constructor (data) {
+      this.data = data;
+      this.next = null;
+    }
+  }
+  
+  class SinglyList {
+    constructor () {
+      this.length = 0;
+      this.head = null;
+    }
+    add (val) {
+      let node = new Node(val);
+      let currentNode = this.head;
+  
+      if (!currentNode) {
+        this.head = node;
+        this.length++;
+        return node;
+      }
+  
+      while (currentNode.next) {
+        currentNode = currentNode.next;
+      }
+      currentNode.next = node;
+      this.length++;
+      return node;
+    }
+    searchNode (position) {
+      let currentNode = this.head;
+      if (this.length === 0 || position < 1 || position > this.length) {
+        throw new Error('positon wrong');
+      }
+      for (let i = 1; i < position; i++) {
+        currentNode = currentNode.next;
+      }
+      return currentNode;
+    }
+    remove (position) {
+      let currentNode = this.head;
+      let beforeNodeToDelete = null;
+      let nodeToDelete = null;
+  
+      if (position < 0 || position > this.length) {
+        throw new Error('position wrong');
+      }
+  
+      if (position === 1) {
+        this.head = currentNode.next;
+        nodeToDelete = currentNode;
+        currentNode = null;
+        this.length--;
+        return nodeToDelete;
+      }
+  
+      for (let i = 1; i < position; i++) {
+        beforeNodeToDelete = currentNode;
+        nodeToDelete = currentNode.next;
+        currentNode = currentNode.next;
+      }
+  
+      beforeNodeToDelete.next = nodeToDelete.next;
+      currentNode = null;
+      return nodeToDelete;
+    }
+}
