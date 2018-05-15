@@ -92,69 +92,69 @@ class Node {
     }
   }
   
-  class DoublyList {
+class DoublyList {
     constructor () {
-      this.length = 0;
-      this.head = null;
-      this.tail = null;
+        this.length = 0;
+        this.head = null;
+        this.tail = null;
     }
     add (data) {
-      let node = new Node(data);
-      if (this.length) {
+        let node = new Node(data);
+        if (this.length) {
         this.tail.next = node;
         node.previous = this.tail;
         this.tail = node;
-      } else {
+        } else {
         this.head = node;
         this.tail = node;
-      }
-      this.length++;
-      return node;
+        }
+        this.length++;
+        return node;
     }
     searchNode (position) {
-      let currentNode = this.head;
-      if (this.length === 0 || position < 1 || position > this.length) {
+        let currentNode = this.head;
+        if (this.length === 0 || position < 1 || position > this.length) {
         throw new Error('position error');
-      }
-  
-      for (let i = 1; i < position; i++) {
+        }
+
+        for (let i = 1; i < position; i++) {
         currentNode = currentNode.next;
-      }
-      return currentNode;
+        }
+        return currentNode;
     }
     remove (position) {
-      let currentNode = this.head;
-      let beforeNodeToDelete = null;
-      let nodeToDelete = null;
-      let afterNodeDelete = null;
-  
-      if (this.length === 0 || position < 1 || position > length) {
+        let currentNode = this.head;
+        let beforeNodeToDelete = null;
+        let nodeToDelete = null;
+        let afterNodeDelete = null;
+
+        if (this.length === 0 || position < 1 || position > length) {
         throw new Error('position wrong');
-      }
-      if (position === 1) {
+        }
+        if (position === 1) {
         nodeToDelete = this.head;
         this.head = currentNode.next;
         if (this.head) {
-          this.head.previous = null;
+            this.head.previous = null;
         } else {
-          this.tail = null;
+            this.tail = null;
         }
-      } else if (position === this.length) {
+        } else if (position === this.length) {
         this.tail = this.tail.previous;
         this.tail.next = null;
-      } else {
+        } else {
         for (let i = 1; i < position; i++) {
-          currentNode = currentNode.next;
+            currentNode = currentNode.next;
         }
         beforeNodeToDelete = currentNode.previous;
         nodeToDelete = currentNode;
         afterNodeDelete = currentNode.next;
-  
+
         beforeNodeToDelete.next = afterNodeDelete;
         afterNodeDelete.previous = beforeNodeToDelete;
-      }
-      this.length--;
-      return nodeToDelete;
+        }
+        this.length--;
+        return nodeToDelete;
     }
 }
 
