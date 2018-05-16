@@ -52,7 +52,7 @@ class Queue {
         let deleteData;
         if (this._oldestIndex !== this._newestIndex) {
         deleteData = this._storage[this._oldestIndex];
-        delete this._storage[this._oldestIndex];
+        delete this._storage[this._oldestIndex++];
         return deleteData;
         }
     }
