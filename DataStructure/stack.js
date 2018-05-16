@@ -45,7 +45,7 @@ class Stack {
     pop () {
       if (this._size) {
         let deleteData = this._storage[this._size];
-        delete this._storage[this._size];
+        delete this._storage[this._size--];
         return deleteData;
       }
     }
