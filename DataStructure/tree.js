@@ -112,8 +112,8 @@ Tree.prototype.forInOrder = function (node) {
 
 Tree.prototype.inOrder = function (callback) {
     var currentNode = null;
-    if (this.root) {
-      currentNode = root;
+    if (this._root) {
+      currentNode = this._root;
     } else {
       return;
     }
@@ -123,12 +123,12 @@ Tree.prototype.inOrder = function (callback) {
         stack.push(currentNode);
         currentNode = currentNode.left;
       }
-      if (!stack.length) {
-        stack.pop(currentNode);
+      if (stack.length) {
+        currentNode = stack.pop();
         callback(currentNode);
         currentNode = currentNode.right;
       }
-    } while (currentNode !== null && stack.length)
+    } while (currentNode !== null || stack.length)
   }
 
 Tree.prototype.inOrderTraverse = function () {
@@ -156,8 +156,8 @@ Tree.prototype.preOrderTraverse = function () {
  */
 Tree.prototype.preOrder = function (callback) {
     var currentNode = null;
-    if (this.root) {
-      currentNode = this.root;
+    if (this._root) {
+      currentNode = this._root;
     } else {
       return;
     }
@@ -214,4 +214,139 @@ Queue.prototype.dequeue = function () {
         return deletedData;
     }
     return null;
+}
+
+// es6写法
+class Node {
+    constructor(data) {
+        this.left = null;
+        this.right = null;
+        this.data = data;
+    }
+}
+
+class Tree {
+    constructor() {
+        this.root = null;
+    }
+    traverseDf() {
+        (function recurse(currentNode) {
+            if (currentNode.left) {
+                recurse(currentNode.left);
+            }
+            if (currentNode.right) {
+                recurse(currentNode.right);
+            }
+            currentNode && console.log(currentNode);
+        })(this.root);
+    }
+    traverseBf() {
+        let queue = [];
+        if (!this.root) return;
+        queue.push(this.root);
+        let currentNode = queue.shift();
+        while (currentNode) {
+            if (currentNode.left) {
+                queue.push(currentNode.left);
+            }
+            if (currentNode.right) {
+                queue.push(currentNode.right);
+            }
+            console.log(currentNode);
+            currentNode = queue.shift();
+        }
+    }
+    insert(data) {
+        let node = new Node(data);
+        let queue = [];
+        if (!this.root) {
+            this.root = node;
+            return;
+        }
+        queue.push(this.root);
+        let currentNode = queue.shift();
+        while (currentNode) {
+            if (currentNode.left) {
+                queue.push(currentNode.left);
+            } else {
+                currentNode.left = node;
+                console.log('insert success!');
+                return;
+            }
+            if (currentNode.right) {
+                queue.push(currentNode.right);
+            } else {
+                currentNode.right = node;
+                console.log('insert success!');
+                return;
+            }
+            currentNode = queue.shift();
+        }
+    }
+    // 递归中序遍历
+    forInOrder(node = this.root) {
+        if (node) {
+            this.forInOrder(node.left);
+            console.log(node);
+            this.forInOrder(node.right);
+        }
+    }
+    // 非递归中序遍历
+    inOrder() {
+        let currentNode = null;
+        if (this._root) {
+            currentNode = this._root;
+        } else {
+            return;
+        }
+        let stack = [];
+        do {
+            while (currentNode !== null) {
+                stack.push(currentNode);
+                currentNode = currentNode.left;
+            }
+            if (stack.length) {
+                currentNode = stack.pop();
+                console.log(currentNode);
+                currentNode = currentNode.right;
+            }
+        } while (currentNode || stack.length);
+    }
+    // 前序遍历递归
+    forPreOrder(node = this.root) {
+        if (node) {
+            console.log(node.data);
+            this.forPreOrder(node.left);
+            this.forPreOrder(node.right);
+        }
+    }
+    // 前序遍历非递归
+    PreOrder() {
+        let currentNode = null;
+        if (this.root) {
+            currentNode = this.root;
+        } else {
+            return;
+        }
+        let stack = [];
+        while (currentNode) {
+            console.log(currentNode);
+            if (currentNode.right) {
+                stack.push(currentNode.right);
+            }
+            if (currentNode.left) {
+                currentNode = currentNode.left;
+            } else {
+                currentNode = stack.pop();
+            }
+        }
+    }
+    // 后续遍历递归
+    forPostOrder(node) {
+        if (node) {
+            this.forPostOrder(node.left);
+            this.forPostOrder(node.right);
+            this.forPostOrder(node.data);
+        }
+    }
 }
