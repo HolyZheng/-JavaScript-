@@ -1,19 +1,19 @@
 function shellSort(arr) {
   var len = arr.length,
-      temp,
+      curr,
       gap = 1;
       while (gap < len/3) {
         gap = gap*3 + 1;
       }
       for (gap; gap > 0; gap = Math.floor(gap/3)) {
         for (var i = gap; i < len; i++) {
-          temp = arr[i];
+          curr = arr[i];
           var j = i;
-          while (j >= 0 && arr[j - gap] > temp) {
+          while (j >= 0 && arr[j - gap] > curr) {
             arr[j] = arr[j - gap];
             j-=gap;
           }
-          arr[j] = temp;
+          arr[j] = curr;
         }
       }
       return arr;
