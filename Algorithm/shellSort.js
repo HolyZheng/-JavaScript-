@@ -8,12 +8,12 @@ function shellSort(arr) {
       for (gap; gap > 0; gap = Math.floor(gap/3)) {
         for (var i = gap; i < len; i++) {
           temp = arr[i];
-          var j = i-gap;
-          while (j >= 0 && arr[j] > temp) {
-            arr[j + gap] = arr[j];
+          var j = i;
+          while (j >= 0 && arr[j - gap] > temp) {
+            arr[j] = arr[j - gap];
             j-=gap;
           }
-          arr[j + gap] = temp;
+          arr[j] = temp;
         }
       }
       return arr;
