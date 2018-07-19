@@ -8,8 +8,10 @@ function shellSort(arr) {
       for (gap; gap > 0; gap = Math.floor(gap/3)) {
         for (var i = gap; i < len; i++) {
           temp = arr[i];
-          for (var j = i-gap; j >= 0 && arr[j] > temp; j-=gap) {
+          var j = i-gap;
+          while (j >= 0 && arr[j] > temp) {
             arr[j + gap] = arr[j];
+            j-=gap;
           }
           arr[j + gap] = temp;
         }
